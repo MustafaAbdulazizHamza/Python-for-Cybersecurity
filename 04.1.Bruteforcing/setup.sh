@@ -1,0 +1,1 @@
+sudo apt install medusa hydra hydra-gtk -y

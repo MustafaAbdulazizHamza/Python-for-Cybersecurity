@@ -3,13 +3,15 @@ from bs4 import BeautifulSoup
 import json
 import sys
 import time
-start = time.perf_counter()
+class HTTPError(Exception):
+    pass
 class BooksToScrapeSpider:
     """
     A web scraping utility designed to extract book information from 
     books.toscrape.com, and save it to a JSON file for future analysis.
     """
     def __init__(self, output:str="output.json") -> None:
+        self.__start = time.perf_counter()
         print("The spider is starting...")
         self._data = []
         self._output = output
@@ -19,6 +21,7 @@ class BooksToScrapeSpider:
                 respond = requests.get(url)
                 if respond.status_code != 200:
                     print(respond.status_code)
+                    raise HTTPError()
                 return respond.text
             except:
                 time.sleep(5)
@@ -34,7 +37,7 @@ class BooksToScrapeSpider:
         if not next:
             self._SaveToJson()
             end = time.perf_counter()
-            print(f"Finished in {end-start} seconds")
+            print(f"Finished in {end-self.__start} seconds")
             return 0
         next = next.a["href"]
         if "catalogue" not in next:

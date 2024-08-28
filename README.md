@@ -49,7 +49,7 @@ The course is composed of ten lectures:
 
 ## Assignments and Projects
 
-The course's assignments and projects are included in this repository. Please fork the repository and upload your solutions to the `00.Assignments_and_Projects` directory.
+The course's assignments and projects are included in this repository. Please fork the repository and upload your solutions to the `00.Assignments and Projects` directory.
 ## For Further Reading
 
 1. **Python Documentation**
